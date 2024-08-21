@@ -1,13 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const users = useSelector((state) => state.users);
-    console.log(users);
   return (
     <>
       <div className="overflow-x-auto p-10">
-        <button className='btn bg-blue-600 text-white text-xl p-2 rounded mb-4'>Add New</button>
+        <Link to='/create' className='btn bg-blue-600 text-white text-xl p-2 rounded mb-4'>Add New</Link>
         <table className="table">
           <thead>
             <tr>
@@ -24,9 +24,9 @@ const Home = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button className="btn bg-blue-600 text-white text-xl">
+                  <Link to={`/edit/${user.id}`} className="btn bg-blue-600 text-white text-xl">
                     edit
-                  </button>
+                  </Link>
                   <button className="btn bg-red-600 ml-6 text-white text-xl">
                     delete
                   </button>
