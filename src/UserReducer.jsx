@@ -19,10 +19,21 @@ const userSlice = createSlice({
       } else {
         console.log("user is not found")
       }
+    },
+
+    deleteUser: (state, action) => {
+      const { id } =action.payload;
+      const uu = state.find(e => e.id == id);
+      if (uu) {
+        return state.filter(e => e.id !== id);
+      } else {
+        console.log( "user is not found" );
+      }
     }
+
   }
 });
 
-export const { addUser,updateUser } = userSlice.actions;
+export const { addUser, updateUser, deleteUser } = userSlice.actions;
 
 export default userSlice.reducer;
